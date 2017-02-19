@@ -64,8 +64,10 @@ if ($blackhole_badbot > 0) {
 	
 echo '
 
-	If you are a human seeing this page go into your websites root folder /blackhole/ and open the file named blackhole.dat
-    Search and delete your ip from the blacklist.
+	If you are a human seeing this page go into your websites root folder /blackhole/ <br>
+	and open the file named blackhole.dat<br>
+    Search and delete your ip from the blacklist.<br>
+	to fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
 
 
 	';
