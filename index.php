@@ -1,0 +1,1 @@
+<?php include(realpath(getenv('DOCUMENT_ROOT')) .'/blackhole/blackhole.php'); ?>
