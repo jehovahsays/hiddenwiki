@@ -6,15 +6,14 @@ header( 'X-Content-Type-Options: nosniff' );
 header( 'XSS-Protection: 1; mode=block' );
 header( 'X-XSS-Protection: 1; mode=block' );
 header( 'X-Frame-Options: Deny' );
-header( 'Content-Security-Policy: default-src "none"; reflected-xss block;' );
-header( 'X-Content-Security-Policy: default-src "none"; reflected-xss block;' );
 header_remove( 'X-Powered-By' );
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Security-Policy" content=" default-src 'none'; reflected-xss block; referrer no-referrer;">
+<meta name="viewport" content="width=device-width">
+<style>body{color:green}</style>
 </head>
-<body>
+<body style="background-color:black">
 <br>
 <center>
 <form 
@@ -30,7 +29,7 @@ accesskey="f"
 id="searchInput" 
 tabindex="1" 
 autocomplete="off" 
-style="color: black; background-color: white">
+style="color: green; background-color: black">
 <input 
 type="hidden" 
 value="Special:Search" 
