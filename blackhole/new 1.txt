@@ -1,0 +1,38 @@
+<meta http-equiv="Content-Security-Policy" content="default-src 'self';">
+
+header( 'Content-Security-Policy: default-src 'self';' );
+
+	header( 'Cache-control: none' );
+	header( 'Pragma: no-cache' );
+
+header( 'Content-Type-Options: nosniff' );
+header( 'XSS-Protection: 1; mode=block' );
+header( 'X-Frame-Options: Deny' );
+header( 'Vary: Accept-Encoding' );
+header( 'Cache-control: private, must-revalidate, max-age=0' );
+header( 'Expires: 5' );
+header( 'Host: www.jehovahsays.net' );
+header( 'viewport: width=device-width' );
+header( 'Accept-Language: en-US,en;q=0.5' );
+header( 'Connection: Keep-alive' );
+header( 'Content-Security-Policy: upgrade-insecure-requests; reflected-xss block;' );
+header( 'X-Content-Security-Policy: upgrade-insecure-requests; reflected-xss block;' );
+header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' );
+header( 'Public-Key-Pins: pin-sha256="etUIaIpkLFWKHoSKeulr5CS/XHN6rVRq4XcdGRGCqTo="; 
+pin-sha256="Slt48iBVTjuRQJTjbzopminRrHSGtndY0/sj0lFf9Qk="; 
+pin-sha256="h6801m+z8v3zbgkRHpq6L29Esgfzhj89C1SyUCOQmqU="; 
+pin-sha256="EDag/9Ub9j75I8wEW6LIcdUBcZyXeI8XVbzBlm0uBQU="; 
+pin-sha256="AYyIEVI7Cz5FAWKATkzY51TwbGqzvDQyUZWpzt8lHjw="; 
+pin-sha256="NTP1sOnRt6yYs00V7BVgxjmhwc289k7i+K/97AZUd4w="; 
+max-age=2592000;' );
+
+header_remove( 'X-Powered-By' );
+
+
+		<form action="index.php" id="searchform" autocomplete="off">
+<input type="search" name="search" placeholder="Search @jehovahsays" 
+title="Search MediaWiki [alt-shift-f]" accesskey="f" id="searchInput" 
+tabindex="1" autocomplete="off" style="color: black; background-color: white">
+<input type="hidden" value="Special:Search" name="title">
+<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="button">				
+</form>

@@ -190,10 +190,9 @@ if ($badbot === 0) {
 	
 // 1st visit (warning) ?>
 
-	If you are a human seeing this page go into your websites root folder /blackhole/ <br>
-	and open the file named blackhole.dat<br>
-    Search and delete your ip from the blacklist.<br>
-	to fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
+<center>	
+Fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
+</center>
 
 <?php 
 
@@ -208,14 +207,11 @@ if ($badbot === 0) {
 	$message  .= 'User Agent: '. $useragent . "\n\n";
 	$message  .= 'Whois Lookup: '. "\n\n" . $whois . "\n";
 	
-	mail($recip, $subject, $message, 'From: '. $from);
-	
 echo '
-	
-	If you are a human seeing this page go into your websites root folder /blackhole/ <br>
-	and open the file named blackhole.dat<br>
-    Search and delete your ip from the blacklist.<br>
-	to fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
+
+<center>	
+Fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
+</center>
 
 	';
 	
