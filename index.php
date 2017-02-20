@@ -1,24 +1,21 @@
 <?php 
 include(realpath(getenv('DOCUMENT_ROOT')) .'/blackhole/blackhole.php');
-header( 'Cache-control: none' );
-header( 'Pragma: no-cache' );
+header( 'Referrer-Policy: no-referrer' );
 header( 'Content-Type-Options: nosniff' );
+header( 'X-Content-Type-Options: nosniff' );
 header( 'XSS-Protection: 1; mode=block' );
+header( 'X-XSS-Protection: 1; mode=block' );
 header( 'X-Frame-Options: Deny' );
-header( 'Vary: Accept-Encoding' );
-header( 'Cache-control: private, must-revalidate, max-age=0' );
-header( 'Expires: 0' );
-header( 'viewport: width=device-width' );
-header( 'Connection: Keep-alive' );
-header( 'Content-Security-Policy: default-src "self" upgrade-insecure-requests; reflected-xss block;' );
-header( 'X-Content-Security-Policy: default-src "self" upgrade-insecure-requests; reflected-xss block;' );
+header( 'Content-Security-Policy: default-src "none"; reflected-xss block;' );
+header( 'X-Content-Security-Policy: default-src "none"; reflected-xss block;' );
 header_remove( 'X-Powered-By' );
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; upgrade-insecure-requests; reflected-xss block;">
+<meta http-equiv="Content-Security-Policy" content=" default-src 'none'; reflected-xss block; referrer no-referrer;">
 </head>
 <body>
+<br>
 <center>
 <form 
 action="index.php" 
