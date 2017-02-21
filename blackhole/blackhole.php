@@ -64,9 +64,7 @@ if ($blackhole_badbot > 0) {
 	
 echo '
 
-<center>	
-Fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
-</center>
+<meta name="viewport" content="width=device-width">
 
 
 	';

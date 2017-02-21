@@ -190,9 +190,7 @@ if ($badbot === 0) {
 	
 // 1st visit (warning) ?>
 
-<center>	
-Fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
-</center>
+<meta name="viewport" content="width=device-width">
 
 <?php 
 
@@ -209,9 +207,7 @@ Fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
 	
 echo '
 
-<center>	
-Fork this repository visit https://github.com/jehovahsays/hiddenwiki<br>
-</center>
+<meta name="viewport" content="width=device-width">
 
 	';
 	
