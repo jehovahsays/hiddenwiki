@@ -1,6 +1,16 @@
 // Setup basic express server
 var express = require('express');
+
+var helmet = require('helmet');
+
 var app = express();
+
+app.use(helmet());
+
+var referrerPolicy = require('referrer-policy')
+
+app.use(referrerPolicy({ policy: 'no-referrer' }))
+
 var server = require('http').createServer(app);
 var io = require('../..')(server);
 var port = process.env.PORT || 80;

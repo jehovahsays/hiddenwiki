@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chat</title>
+  <title>Command Prompt</title>
   <meta name="viewport" content="width=device-width">
+  <meta name="X-Powered-By">
+  <meta name="Content-Type-Options" content="nosniff">
+  <meta name="X-Content-Type-Options" content="nosniff">
+  <meta name="XSS-Protection" content="1; mode=block">
+  <meta name="X-XSS-Protection" content="1; mode=block">
+  <meta name="Frame-Options" content="same-origin">
+  <meta name="X-Frame-Options" content="same-origin">
+  <meta name ="theme-color" content="black">
   <style>
 	/* Fix user-agent */
 
@@ -68,7 +76,7 @@ ul {
   position: absolute;
 
   text-align: center;
-  top: 50%;
+  top: 40%;
   width: 100%;
 }
 
@@ -168,17 +176,38 @@ ul {
     <li class="chat page">
       <div class="chatArea">
 	  <br>
-	  <center><a href='http://www.jehovahsays.net:2095/index.php?title=Comments&action=edit'>Edit</a></center>
+	  <center><a href='http://jehovahsays.net'>Update this Chat</a></center>	  
+	  <br>
+	  <center><a href='https://www.jehovahsays.net/index.php?title=Main_Page'>@jehovahsays Wiki</a></center>
+	  <br>
+	  <center><a href='http://jehovahsays.net/web/index.html'>Multiplayer BrowserQuest</a></center>	
+	  <br>
+	  <center>Follow <a href='https://www.twitter.com/jehovahsays'>@jehovahsays</a></center>		  
+<br>
+<center>
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: "en", layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT, gaTrack: true, gaId: "UA-60536321-1"}, "google_translate_element");
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</center>
+<br>	  
         <ul class="messages"></ul>
       </div>
+	  
+	  <a href="https://github.com/jehovahsays/hiddenwiki">
+	  <img style="position: absolute; top: 0; left: 0; border: 0;" 
+	  src="https://camo.githubusercontent.com/121cd7cbdc3e4855075ea8b558508b91ac463ac2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677265656e5f3030373230302e706e67" 
+	  alt="Fork this repository on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png"></a>
+	  
       <input class="inputMessage" placeholder="Type here..."/>
     </li>
     <li class="login page">
       <div class="form">
-	  <fieldset>
-        <h3 class="title">What's your nickname?</h3>
-        <input class="usernameInput" type="text" maxlength="14" />
-		</fieldset>
+
+        <h3 class="title"></h3>
+        <input class="usernameInput" type="text" maxlength="14" placeholder="C:      " />
+
       </div>
     </li>
   </ul>
