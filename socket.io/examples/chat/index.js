@@ -2,7 +2,7 @@
 var express = require('express');
 
 var redis = require('socket.io-redis');
-io.adapter(redis({ host: 'www.jehovahsays.net', port: 6379 }));
+
 
 var helmet = require('helmet');
 
