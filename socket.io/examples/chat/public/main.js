@@ -28,9 +28,9 @@ $(function() {
   function addParticipantsMessage (data) {
     var message = '';
     if (data.numUsers === 1) {
-      message += "there's 1 participant";
+      message += "there is 1 visitor searching";
     } else {
-      message += "there are " + data.numUsers + " participants";
+      message += "there are " + data.numUsers + " visitors searching";
     }
     log(message);
   }
@@ -229,7 +229,7 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Welcome to Chat – ";
+    var message = "Search this website";
     log(message, {
       prepend: true
     });

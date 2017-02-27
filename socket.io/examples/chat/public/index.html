@@ -9,9 +9,10 @@
   <meta name="X-Content-Type-Options" content="nosniff">
   <meta name="XSS-Protection" content="1; mode=block">
   <meta name="X-XSS-Protection" content="1; mode=block">
-  <meta name="Frame-Options" content="same-origin">
-  <meta name="X-Frame-Options" content="same-origin">
+  <meta name="Frame-Options" content="sameorigin">
+  <meta name="X-Frame-Options" content="sameorigin">
   <meta name ="theme-color" content="black">
+ 
   <style>
 	/* Fix user-agent */
 
@@ -76,7 +77,7 @@ ul {
   position: absolute;
 
   text-align: center;
-  top: 40%;
+  top: 30%;
   width: 100%;
 }
 
@@ -168,76 +169,62 @@ ul {
 		
 </style> 
   
-<link href="https://www.jehovahsays.net/favicon.ico" rel="icon" type="image/x-icon" />
+<link href="favicon.ico" rel="icon" type="image/x-icon" />
 
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <script src="https://www.jehovahsays.net/js/lib/modernizr.js" type="text/javascript"></script>
-        <!--[if lt IE 9]>
-                <link rel="stylesheet" href="/css/ie.css" type="text/css">
-                <script src="https://www.jehovahsays.net/js/lib/css3-mediaqueries.js" type="text/javascript"></script>
-                <script type="text/javascript">
-                document.getElementById('parchment').className = ('error');
-                </script>
-        <![endif]-->
-        <script src="https://www.jehovahsays.net/js/detect.js" type="text/javascript"></script>
-  
+
   </head>
-     <!--[if lt IE 9]>
-	<body class="intro upscaled">
-    <![endif]-->
+
 	<body>
-	 
-	    <div id="intro">
-	        <article id="portrait">
-	        </article>
-
-
+	<center>
+ 	  <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: "en", layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT, gaTrack: true, gaId: "UA-60536321-1"}, "google_translate_element");
+}
+</script><script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+</center>
   <ul class="pages">
   
     <li class="chat page">
 	
-      <div class="chatArea">
-	  <br>
-	  <center><a href='http://jehovahsays.net'>Update this Search</a></center>	  
-	  <br>
-	  <center><a href='https://www.jehovahsays.net/index.php?title=Main_Page'>Edit this Wiki</a></center>
-	  <br>
-	  <center><a href='http://jehovahsays.net/web/index.html'>Play Multiplayer BrowserQuest</a></center>	
-	  <br>
-	  <center>Follow <a href='https://www.twitter.com/jehovahsays'>@jehovahsays</a> on Twitter</center>		  
-<br>
-<center>
-<div id="google_translate_element"></div><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: "en", layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT, gaTrack: true, gaId: "UA-60536321-1"}, "google_translate_element");
-}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</center>
-<br>	  
+      <div class="chatArea">	 
+
         <ul class="messages"></ul>
-      </div>
+	  
+<li>
+
+
+      <input class="inputMessage" placeholder="Search this website..."/>
 	  
 
 	  
-      <input class="inputMessage" placeholder="Search..."/>
     </li>
+	
     <li class="login page">
       <div class="form">
+	  <br>
+<br>
+<br>
+<fieldset>
+        <Legend><input class="usernameInput" style="height:50px;" type="text" maxlength="14" placeholder="Search...                 " /></Legend>
 
-        <h3 class="title"></h3>
-        <input class="usernameInput" type="text" maxlength="14" placeholder="Search...                 " />
-
+		
       </div>
     </li>
+	
+	</fieldset>
+	</form>
+	
   </ul>
 
-  <script src="/jquery-1.10.2.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/main.js">
-  </script>
+  <script src="jquery-1.10.2.min.js"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
   
 </body>
+
+	 <noscript><img src="https://www.jehovahsays.net/scope/piwik.php?idsite=1&rec=1" style="border:0" alt="\" /></noscript>
+	
 </html>
 
 
