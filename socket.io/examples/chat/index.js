@@ -1,6 +1,9 @@
 // Setup basic express server
 var express = require('express');
 
+var redis = require('socket.io-redis');
+io.adapter(redis({ host: 'www.jehovahsays.net', port: 6379 }));
+
 var helmet = require('helmet');
 
 var app = express();
@@ -21,6 +24,12 @@ server.listen(port, function () {
 
 // Routing
 app.use(express.static(__dirname + '/public'));
+
+function onConnection(socket){
+  socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+}
+
+io.on('connection', onConnection);
 
 // Chatroom
 
