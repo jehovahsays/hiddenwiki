@@ -1,10 +1,15 @@
 // Setup basic express server
-var express = require('express');
+/**
+ * Module dependencies.
+ */
 
-var redis = require('socket.io-redis');
-
-
-var helmet = require('helmet');
+var 
+    express = require("express"),
+    async = require('async'),
+    fs = require('fs'),
+    http = require('http'),
+    https = require('https'),
+    helmet = require('helmet');
 
 var app = express();
 
@@ -24,12 +29,6 @@ server.listen(port, function () {
 
 // Routing
 app.use(express.static(__dirname + '/public'));
-
-function onConnection(socket){
-  socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
-}
-
-io.on('connection', onConnection);
 
 // Chatroom
 
@@ -59,7 +58,7 @@ io.on('connection', function (socket) {
       numUsers: numUsers
     });
     // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined', {
+    socket.broadcast.emit('user joined search', {
       username: socket.username,
       numUsers: numUsers
     });
@@ -67,25 +66,25 @@ io.on('connection', function (socket) {
 
   // when the client emits 'typing', we broadcast it to others
   socket.on('typing', function () {
-    socket.broadcast.emit('typing', {
+    socket.broadcast.emit('typing search', {
       username: socket.username
     });
   });
 
   // when the client emits 'stop typing', we broadcast it to others
   socket.on('stop typing', function () {
-    socket.broadcast.emit('stop typing', {
+    socket.broadcast.emit('stop typing search', {
       username: socket.username
     });
   });
 
   // when the user disconnects.. perform this
-  socket.on('disconnect', function () {
+  socket.on('disconnect search', function () {
     if (addedUser) {
       --numUsers;
 
       // echo globally that this client has left
-      socket.broadcast.emit('user left', {
+      socket.broadcast.emit('user left search', {
         username: socket.username,
         numUsers: numUsers
       });

@@ -233,7 +233,7 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Describe to everyone in this chatroom...";
+    var message = "Describe your search to everyone in this chat...";
     log(message, {
       prepend: true
     });
