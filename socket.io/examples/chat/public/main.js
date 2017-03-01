@@ -1,3 +1,7 @@
+'use strict';
+
+
+
 $(function() {
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
@@ -229,7 +233,7 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Search this website";
+    var message = "Describe to everyone in this chatroom...";
     log(message, {
       prepend: true
     });
