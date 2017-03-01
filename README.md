@@ -1,2 +1,8 @@
-# Classified
-Search this website. http://www.jehovahsays.net
+# MMOSOCKETHTML5JSCHAT
+MASSIVE MULTIPLAYER ONLINE
+WEB SOCKETS
+HTML5 2D +
+NODE.JS
+NPM
+SOCKET.IO CHAT 
+http://www.jehovahsays.net

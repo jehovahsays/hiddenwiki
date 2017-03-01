@@ -27,8 +27,8 @@
             if ($answer1 == "A") echo "<center>
 	
 	<button onclick=\"JavaScript:alert('If you are human click the OK button.')\">
-	<a href=\"/web/index.html\">
-	<img src=\"/img/3/guard.png\">
+	<a href=\"http://www.jehovahsays.net/web/index.html\">
+	<img src=\"http://www.jehovahsays.net/img/3/guard.png\">
 	<br>PRESS START
 </button></a>
 </center><br>\n"; { $totalCorrect++; }
