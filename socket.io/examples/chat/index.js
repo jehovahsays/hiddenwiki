@@ -8,9 +8,8 @@ var
     async = require('async'),
     fs = require('fs'),
     http = require('http'),
-    https = require('https'),
     helmet = require('helmet');
-
+	
 var app = express();
 
 app.use(helmet());
@@ -21,7 +20,7 @@ app.use(referrerPolicy({ policy: 'no-referrer' }))
 
 var server = require('http').createServer(app);
 var io = require('../..')(server);
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3000;
 
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
@@ -29,6 +28,14 @@ server.listen(port, function () {
 
 // Routing
 app.use(express.static(__dirname + '/public'));
+
+
+// experimental
+function onConnection(socket){
+  socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+}
+
+io.on('connection', onConnection);
 
 // Chatroom
 

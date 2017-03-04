@@ -38,6 +38,7 @@ $(function() {
     }
     log(message);
   }
+  
 
   // Sets the client's username
   function setUsername () {
@@ -233,6 +234,7 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
+
     var message = "Describe your search to everyone in this chat...";
     log(message, {
       prepend: true
