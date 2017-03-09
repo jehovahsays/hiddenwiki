@@ -1,5 +1,5 @@
 <?php
-header( "Location: http://www.jehovahsays.net:3001", true, 302);
+header( "Location: http://mobile.jehovahsays.net", true, 302);
 echo "<!DOCTYPE html>\n"; 
 echo "<html lang=\"en\"><head>	\n"; 
 echo "<meta charset=\"UTF-8\">\n"; 
