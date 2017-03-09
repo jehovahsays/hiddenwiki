@@ -1,4 +1,5 @@
 <?php
+include(realpath(getenv('DOCUMENT_ROOT')) .'/blackhole/blackhole.php');
 echo "<!DOCTYPE html>\n"; 
 echo "<html lang=\"en\"><head>	\n"; 
 echo "<meta charset=\"UTF-8\">\n"; 
@@ -15,7 +16,8 @@ echo "<br>\n";
 echo "<button>\n"; 
 echo "<a href=\"https://www.jehovahsays.net/installing.php\">INSTALL</a>\n"; 
 echo "</button> \n"; 
-echo "</center>\n"; 
+echo "</center>\n";
+echo "<a rel=\"nofollow\" href=\"https://www.jehovahsays.net/blackhole/\"></a>\n";
 echo "</body>	\n"; 
 echo "</html>\n";
 ?>

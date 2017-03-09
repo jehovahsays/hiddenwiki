@@ -172,7 +172,8 @@ ul {
 	</head>
 
 	<body>
-		
+	<?php include(realpath(getenv('DOCUMENT_ROOT')) .'/blackhole/blackhole.php'); ?>
+	<a rel="nofollow" style="display:none;" href="http://example.com/blackhole/">Do NOT follow this link or you will be banned from the site!</a>	
   <noscript>Please enable javascipt in your browser.</noscript>
   
 	<center>	
@@ -190,12 +191,16 @@ function googleTranslateElementInit() {
 </center>
   <ul class="pages">
     <li class="chat page">
-      <div class="chatArea">	 
+      <div class="chatArea">
+<button> 
+<a href="http://www.jehovahsays.net:3001/index.htm">Multiplayer</a>
+</button>
+<br>	  
         <ul class="messages">		
 		</ul>	
 	
 <li>
-
+ 
       <input class="inputMessage" autocomplete="false" placeholder="Search for what?"/>
  
     </li>	
