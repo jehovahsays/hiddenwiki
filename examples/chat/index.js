@@ -1,6 +1,25 @@
 // Setup basic express server
-var express = require('express');
+/**
+ * Module dependencies.
+ */
+
+var 
+    express = require("express"),
+    async = require('async'),
+    fs = require('fs'),
+    http = require('http'),
+    helmet = require('helmet');
+	
 var app = express();
+
+app.use(helmet());
+
+var referrerPolicy = require('referrer-policy')
+
+app.use(referrerPolicy({ policy: 'no-referrer' }))
+
+app.use(helmet.hidePoweredBy())
+
 var server = require('http').createServer(app);
 var io = require('../..')(server);
 var port = process.env.PORT || 3001;
@@ -40,7 +59,7 @@ io.on('connection', function (socket) {
       numUsers: numUsers
     });
     // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined', {
+    socket.broadcast.emit('user joined search', {
       username: socket.username,
       numUsers: numUsers
     });
@@ -48,14 +67,14 @@ io.on('connection', function (socket) {
 
   // when the client emits 'typing', we broadcast it to others
   socket.on('typing', function () {
-    socket.broadcast.emit('typing', {
+    socket.broadcast.emit('user typing search', {
       username: socket.username
     });
   });
 
   // when the client emits 'stop typing', we broadcast it to others
   socket.on('stop typing', function () {
-    socket.broadcast.emit('stop typing', {
+    socket.broadcast.emit('user stop typing search', {
       username: socket.username
     });
   });
@@ -66,7 +85,7 @@ io.on('connection', function (socket) {
       --numUsers;
 
       // echo globally that this client has left
-      socket.broadcast.emit('user left', {
+      socket.broadcast.emit('user left search', {
         username: socket.username,
         numUsers: numUsers
       });
