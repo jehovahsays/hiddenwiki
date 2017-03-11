@@ -1,6 +1,0 @@
-User-agent: *
-
-Disallow: /node_modules/
-Disallow: /socket.io/
-Disallow: /blackhole/
-Disallow: /
