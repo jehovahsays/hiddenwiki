@@ -24,7 +24,7 @@ Credits: The Blackhole includes customized/modified versions of these fine scrip
 
 
 // edit as needed
-$from      = 'morgansbyers@gmail.com'; // from address
+$from      = 'authority@jehovahsays.net'; // from address
 $recip     = 'morgansbyers@gmail.com'; // to address
 $subject   = 'Bad Bot Alert!';
 $filename  = realpath(getenv('DOCUMENT_ROOT')) .'/blackhole/blackhole.dat';
@@ -207,7 +207,7 @@ if ($badbot === 0) {
 			</p>
 			<h3>Your IP Address is <?php echo $ipaddress; ?></h3>
 			<pre>WHOIS Lookup for <?php echo $ipaddress ."\n". $date ."\n\n". $whois; ?></pre>
-			<p><a href="http://perishablepress.com/blackhole-bad-bots/" title="Blackhole for Bad Bots">Blackhole v<?php echo $version; ?></a></p>
+			<p><a href="https://perishablepress.com/blackhole-bad-bots/" title="Blackhole for Bad Bots">Blackhole v<?php echo $version; ?></a></p>
 		</div>
 	</body>
 </html><?php 
