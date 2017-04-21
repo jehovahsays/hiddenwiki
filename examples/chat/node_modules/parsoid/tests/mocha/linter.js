@@ -1,0 +1,209 @@
+/** Test cases for the linter */
+'use strict';
+/*global describe, it*/
+
+require('../../core-upgrade.js');
+require('chai').should();
+
+var ParsoidConfig = require('../../lib/config/ParsoidConfig.js').ParsoidConfig;
+var helpers = require('./test.helpers.js');
+
+describe('Linter Tests', function() {
+	// FIXME: MWParserEnvironment.getParserEnv and switchToConfig both require
+	// mwApiMap to be setup. This forces us to load WMF config. Fixing this
+	// will require some changes to ParsoidConfig and MWParserEnvironment.
+	// Parsing the `[[file:...]]` tags below may also require running the
+	// mock API to answer imageinfo queries.
+	var parsoidConfig = new ParsoidConfig(null, { defaultWiki: 'enwiki', loadWMF: true, linting: true });
+	var parseWT = function(wt) {
+		return helpers.parse(parsoidConfig, wt).then(function(ret) {
+			return ret.env.linter.buffer;
+		});
+	};
+
+	describe('#Issues', function() {
+		it('should not lint any issues', function() {
+			return parseWT('foo').then(function(result) {
+				return result.should.be.empty;
+			});
+		});
+		it('should lint missing end tags correctly', function() {
+			return parseWT('<div>foo').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "missing-end-tag");
+				result[0].dsr.should.include.members([ 0, 8, 5, 0 ]);
+				result[0].should.have.a.property("params");
+				result[0].params.should.have.a.property("name", "div");
+			});
+		});
+		it('should lint missing end tags found in transclusions correctly', function() {
+			return parseWT('{{1x|<div>foo<p>bar</div>}}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "missing-end-tag");
+				result[0].dsr.should.include.members([ 0, 27, null, null ]);
+				result[0].should.have.a.property("templateInfo");
+				result[0].templateInfo.should.have.a.property("name", "1x");
+				result[0].should.have.a.property("params");
+				result[0].params.should.have.a.property("name", "p");
+			});
+		});
+		it('should lint stripped tags correctly', function() {
+			return parseWT('foo</div>').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "stripped-tag");
+				result[0].dsr.should.include.members([ 3, 9, null, null ]);
+			});
+		});
+		it('should lint stripped tags found in transclusions correctly', function() {
+			return parseWT('{{1x|<div>foo</div></div>}}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "stripped-tag");
+				result[0].dsr.should.include.members([ 0, 27, null, null ]);
+			});
+		});
+		it('should lint obsolete tags correctly', function() {
+			return parseWT('<tt>foo</tt>bar').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "obsolete-tag");
+				result[0].dsr.should.include.members([ 0, 12, 4, 5 ]);
+				result[0].should.have.a.property("params");
+				result[0].params.should.have.a.property("name", "tt");
+			});
+		});
+		it('should not lint big as an obsolete tag', function() {
+			return parseWT('<big>foo</big>bar').then(function(result) {
+				result.should.have.length(0);
+			});
+		});
+		it('should lint obsolete tags found in transclusions correctly', function() {
+			return parseWT('{{1x|<div><tt>foo</tt></div>}}foo').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "obsolete-tag");
+				result[0].dsr.should.include.members([ 0, 30, null, null ]);
+				result[0].should.have.a.property("params");
+				result[0].params.should.have.a.property("name", "tt");
+			});
+		});
+		it('should not lint auto-inserted obsolete tags', function() {
+			return parseWT('<tt>foo\n\n\nbar').then(function(result) {
+				// obsolete-tag and missing-end-tag
+				result.should.have.length(2);
+				result[0].should.have.a.property("type", "missing-end-tag");
+				result[1].should.have.a.property("type", "obsolete-tag");
+				result[1].dsr.should.include.members([ 0, 7, 4, 0 ]);
+				result[1].should.have.a.property("params");
+				result[1].params.should.have.a.property("name", "tt");
+			});
+		});
+		it('should lint fostered content correctly', function() {
+			return parseWT('{|\nfoo\n|-\n| bar\n|}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "fostered");
+				result[0].dsr.should.include.members([ 0, 18, 2, 2 ]);
+			});
+		});
+		it('should lint ignored table attributes Correctly', function() {
+			return parseWT('{|\n|- foo\n|bar\n|}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "ignored-table-attr");
+				result[0].dsr.should.include.members([ 3, 14, 6, 0 ]);
+			});
+		});
+		it('should lint ignored table attributes found in transclusions correctly', function() {
+			return parseWT('{{1x|\n{{{!}}\n{{!}}- foo\n{{!}} bar\n{{!}}}\n}}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "ignored-table-attr");
+				result[0].dsr.should.include.members([ 0, 43, null, null]);
+			});
+		});
+		it('should not lint whitespaces as ignored table attributes', function() {
+			return parseWT('{|\n|- \n| 1 ||style="text-align:left;"| p \n|}').then(function(result) {
+				result.should.have.length(0);
+			});
+		});
+		it('should lint as ignored table attributes', function() {
+			return parseWT('{|\n|- <!--bad attr-->attr\n|bar\n|}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "ignored-table-attr");
+				result[0].dsr.should.include.members([ 3, 30, 22, 0 ]);
+			});
+		});
+		it('should lint Bogus image options correctly', function() {
+			return parseWT('[[file:a.jpg|foo|bar]]').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "bogus-image-options");
+				result[0].dsr.should.include.members([ 0, 22, null, null ]);
+				result[0].should.have.a.property("params");
+				result[0].params.should.have.a.property("items");
+				result[0].params.items.should.include.members(["foo"]);
+			});
+		});
+		it('should lint Bogus image options found in transclusions correctly', function() {
+			return parseWT('{{1x|[[file:a.jpg|foo|bar]]}}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "bogus-image-options");
+				result[0].dsr.should.include.members([ 0, 29, null, null ]);
+				result[0].should.have.a.property("params");
+				result[0].params.items.should.include.members(["foo"]);
+			});
+		});
+		it('should batch lint Bogus image options correctly', function() {
+			return parseWT('[[file:a.jpg|foo|bar|baz]]').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "bogus-image-options");
+				result[0].dsr.should.include.members([ 0, 26, null, null ]);
+				result[0].should.have.a.property("params");
+				result[0].params.items.should.include.members(["foo", "bar"]);
+			});
+		});
+		it('should not send any Bogus image options if there are none', function() {
+			return parseWT('[[file:a.jpg|foo]]').then(function(result) {
+				result.should.have.length(0);
+			});
+		});
+		it('should not crash on gallery images', function() {
+			return parseWT('<gallery>\nfile:a.jpg\n</gallery>')
+			.then(function(result) {
+				result.should.have.length(0);
+			});
+		});
+		it('should lint self-closing tags corrrectly', function() {
+			return parseWT('foo<b />bar<span />baz<hr />boo<br /> <ref name="boo" />').then(function(result) {
+				result.should.have.length(2);
+				result[0].should.have.a.property("type", "self-closed-tag");
+				result[0].dsr.should.include.members([ 3, 8, 5, 0 ]);
+				result[0].should.have.a.property("params");
+				result[0].params.should.have.a.property("name", "b");
+				result[1].should.have.a.property("type", "self-closed-tag");
+				result[1].dsr.should.include.members([ 11, 19, 8, 0 ]);
+				result[1].should.have.a.property("params");
+				result[1].params.should.have.a.property("name", "span");
+			});
+		});
+		it('should lint self-closing tags in a template correctly', function() {
+			return parseWT('{{1x|<b /> <ref name="boo" />}}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "self-closed-tag");
+				result[0].dsr.should.include.members([ 0, 31, null, null ]);
+				result[0].should.have.a.property("params");
+				result[0].params.should.have.a.property("name", "b");
+				result[0].should.have.a.property("templateInfo");
+				result[0].templateInfo.should.have.a.property("name", "1x");
+			});
+		});
+		it('should lint mixed-content templates', function() {
+			return parseWT('{{1x|*}}hi').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "mixed-content");
+				result[0].dsr.should.include.members([ 0, 10, null, null ]);
+			});
+		});
+		it('should lint multi-template', function() {
+			return parseWT('{{1x|*}}{{1x|hi}}').then(function(result) {
+				result.should.have.length(1);
+				result[0].should.have.a.property("type", "multi-template");
+				result[0].dsr.should.include.members([ 0, 17, null, null ]);
+			});
+		});
+	});
+});
