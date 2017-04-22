@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require('express'),
     https = require('https'),
 	connect = require('connect'),
@@ -9,18 +11,10 @@ var express = require('express'),
 	url = require('url'),
 	frameguard = require('frameguard'),
 	tls = require('tls'),
+	ServiceRunner = require('service-runner'),
     fs = require('fs');
 	
-var express = require('express');
 var app = express();
-
-//var php = require('php-embed');
-//php.request({
-  //file: path.join(__dirname, 'index.php'),
-  //stream: process.stdout
-//}).then(function(v) {
-  //console.log('php is done and stream flushed.');
-//});
 
 // must specify options hash even if no options provided!
 //var phpExpress = require('php-express')({
