@@ -1,3 +1,4 @@
 User-agent: *
 
-Disallow: /blackhole/
+Disallow: /index.php
+Disallow: /selfxss/

@@ -1,8 +1,13 @@
 'use strict';
+/*global window, require, console, __dirname, $,alert*/
 
+var log = function(msg)
+{
+    console.log(msg);
+};
+log('The Developer console is temporarily disabled; see https://www.facebook.com/selfxss for more information');
 
-
-$(function() {
+$('document').ready(function() {
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
@@ -26,8 +31,12 @@ $(function() {
   var typing = false;
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
-
-  var socket = io();
+  
+     var socket = io.connect(window.location.hostname);
+    socket.on('connect', function()
+    {
+        log('socket connected');
+    });
 
   function addParticipantsMessage (data) {
 	  
