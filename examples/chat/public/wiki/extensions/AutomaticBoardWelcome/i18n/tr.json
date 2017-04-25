@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joseph"
+		]
+	},
+	"automaticboardwelcome-desc": "Hesap oluşturulmasından sonra yeni kullanıcıların kullanıcı panolarına otomatik olarak [[MediaWiki:User-board-welcome-message|bir hoş geldiniz iletisi]] gönderir"
+}

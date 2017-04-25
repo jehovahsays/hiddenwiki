@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko"
+		]
+	},
+	"automaticboardwelcome-desc": "Аўтаматычна разьмяшчае [[MediaWiki:User-board-welcome-message|вітальнае паведамленьне]] на дошцы новага карыстальніка пасьля стварэньне рахунку"
+}

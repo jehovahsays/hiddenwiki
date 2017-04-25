@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kandar"
+		]
+	},
+	"automaticboardwelcome-desc": "Otomatis kirimkeun [[MediaWiki:User-board-welcome-message|pangbagéa]] kana papan kontributor sanggeus asupnya akun anyar"
+}

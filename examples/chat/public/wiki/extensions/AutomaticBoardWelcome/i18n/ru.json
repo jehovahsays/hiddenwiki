@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Александр Сигачёв"
+		]
+	},
+	"automaticboardwelcome-desc": "Автоматически оставляет [[MediaWiki:User-board-welcome-message|приветственное сообщение]] на досках новых участников после создания учётных записей."
+}

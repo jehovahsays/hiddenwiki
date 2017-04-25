@@ -1,0 +1,78 @@
+{
+	"name": "Cards",
+	"version": "0.4.0",
+	"author": [
+		"Reading Web"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Cards",
+	"descriptionmsg": "cards-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"MessagesDirs": {
+		"Cards": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"Cards\\ResourceLoaderMuHoganModule": "includes/ResourceLoaderMuhoganModule.php",
+		"Cards\\Hooks": "includes/Cards.hooks.php"
+	},
+	"Hooks": {
+		"ResourceLoaderTestModules": [
+			"Cards\\Hooks::onResourceLoaderTestModules"
+		]
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Cards"
+	},
+	"ResourceModules": {
+		"mediawiki.template.muhogan": {
+			"class": "Cards\\ResourceLoaderMuHoganModule",
+			"scripts": [
+				"resources/muhogan.js"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.cards": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"group": "other",
+			"dependencies": [
+				"oojs",
+				"mediawiki.util",
+				"ext.cards.lib"
+			],
+			"scripts": [
+				"resources/init.js",
+				"resources/CardModel.js",
+				"resources/CardView.js",
+				"resources/CardListView.js",
+				"resources/CardsGateway.js"
+			],
+			"styles": [
+				"resources/styles.less"
+			],
+			"templates": {
+				"card.muhogan": "resources/card.muhogan",
+				"cards.muhogan": "resources/cards.muhogan"
+			}
+		},
+		"ext.cards.lib": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"group": "other",
+			"scripts": [
+				"lib/CSS.escape/css.escape.js"
+			]
+		}
+	},
+	"manifest_version": 1
+}

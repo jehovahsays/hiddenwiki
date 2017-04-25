@@ -1,0 +1,72 @@
+{
+	"name": "MobileApp",
+	"author": [
+		"Yuvi Panda"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:MobileApp",
+	"descriptionmsg": "mobileapp-desc",
+	"license-name": "GPL-2.0+",
+	"type": "other",
+	"MessagesDirs": {
+		"MobileApp": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"MobileAppResourceLoaderModule": "MobileAppResourceLoaderModule.php",
+		"MobileAppHooks": "MobileApp.hooks.php"
+	},
+	"ResourceModules": {
+		"mobile.app.site": {
+			"class": "MobileAppResourceLoaderModule"
+		},
+		"mobile.app.pagestyles.android": {
+			"styles": [
+				"styles/disambig.less",
+				"styles/editlinks.less",
+				"styles/enwiki.less",
+				"styles/issues.less",
+				"styles/android/loading.less",
+				"styles/android/ipa.less",
+				"styles/android/parsoid.less",
+				"styles/android/tables.less",
+				"styles/android/widenImages.less"
+			]
+		},
+		"mobile.app.pagestyles.android.night": {
+			"styles": [
+				"styles/night.less"
+			]
+		},
+		"mobile.app.pagestyles.ios": {
+			"styles": [
+				"styles/disambig.less",
+				"styles/editlinks.less",
+				"styles/enwiki.less",
+				"styles/issues.less"
+			]
+		},
+		"mobile.app.preview": {
+			"styles": [
+				"styles/preview.less",
+				"styles/enwiki.less"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "MobileApp"
+	},
+	"Hooks": {
+		"ListDefinedTags": [
+			"MobileAppHooks::onListDefinedTags"
+		],
+		"ChangeTagsListActive": [
+			"MobileAppHooks::onListDefinedTags"
+		],
+		"RecentChange_save": [
+			"MobileAppHooks::onRecentChange_save"
+		]
+	},
+	"manifest_version": 1
+}

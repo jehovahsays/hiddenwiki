@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sfic"
+		]
+	},
+	"automaticboardwelcome-desc": "स्वतः ही नए सदस्यों को [[MediaWiki:User-board-welcome-message|स्वागत संदेश]] भेजने के लिए।"
+}

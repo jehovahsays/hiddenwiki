@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sp5uhe",
+			"Woytecr"
+		]
+	},
+	"automaticboardwelcome-desc": "Automatycznie wstawia [[MediaWiki:User-board-welcome-message|wiadomość powitalną]] nowym użytkownikom na ich stronach dyskusji po ukończeniu rejestracji"
+}

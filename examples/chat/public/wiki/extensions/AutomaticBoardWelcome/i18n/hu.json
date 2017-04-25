@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dj"
+		]
+	},
+	"automaticboardwelcome-desc": "Automatikusan küld [[MediaWiki:User-board-welcome-message|egy üdvözlő üzenetet]] az új szerkesztők vitalapjára a fiók létrehozása után"
+}

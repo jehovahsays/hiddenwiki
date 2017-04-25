@@ -195,6 +195,7 @@ ca1.pem
 domaincert.pem
 domaincsr.pem
 domainkey.pem
+localsettings.php
 
 
 #############

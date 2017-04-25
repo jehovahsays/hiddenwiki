@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hylle"
+		]
+	},
+	"automaticboardwelcome-desc": "Sender automatisk [[MediaWiki:User-board-welcome-message|en velkomst besked]] til nye brugers brugertavler efter kontooprettelse"
+}

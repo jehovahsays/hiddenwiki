@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"LNDDYL"
+		]
+	},
+	"automaticboardwelcome-desc": "在新使用者帳號建立後自動在其留言簿上張貼[[MediaWiki:User-board-welcome-message|一則歡迎訊息]]"
+}

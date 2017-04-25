@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"EileenSanda"
+		]
+	},
+	"automaticboardwelcome-desc": "Posta sjálvvirkandi [[MediaWiki:User-board-welcome-message|eini vælkomst boð]] á brúkaratalvuna hjá nýggjum brúkarum eftir stovnan av konto"
+}

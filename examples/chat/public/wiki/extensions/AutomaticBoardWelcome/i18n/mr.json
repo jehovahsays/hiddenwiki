@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"automaticboardwelcome-desc": "खाते निर्माण झाल्यावर स्वयंचलितरित्या [[MediaWiki:User-board-welcome-message|स्वागत संदेश]] नविन सदस्याच्या सदस्यफलकावर टाकते."
+}

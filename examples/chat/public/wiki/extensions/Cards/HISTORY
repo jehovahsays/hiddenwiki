@@ -1,0 +1,17 @@
+==Cards 0.3.0==
+b43afab Use background-size:cover for thumbnails
+==Cards 0.2.0==
+5a9080c Add the extension boilerplate
+535bcbc Add jshint and jscs support
+5b392e8 Add a module that renders cards
+756386b Generate documentation with JSDuck
+8f50393 Fix link style and text colors
+3340caf Fix card heading font-family.
+08be488 Tools: Allow dangling underscores in JSCS
+468b393 Add Model
+04b3574 Simplify the modules
+ac482a5 Design tweaks of Cards
+2600eec Sanitize/escape thumbnail URLs
+8e70ba8 Display cards in desktop view too
+eac5d60 Don't encode the thumbnail URL before escaping it
+9249c2d Update documentation

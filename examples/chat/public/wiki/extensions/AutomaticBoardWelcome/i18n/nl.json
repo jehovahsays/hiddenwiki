@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"automaticboardwelcome-desc": "Plaatst een [[MediaWiki:User-board-welcome-message|welkomstbericht]] op het gebruikersbord van nieuwe gebruikers"
+}

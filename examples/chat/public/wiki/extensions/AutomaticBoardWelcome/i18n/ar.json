@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"DRIHEM"
+		]
+	},
+	"automaticboardwelcome-desc": "يعرض تلقائيا [[MediaWiki:User-board-welcome-message|رسالة ترحيب]] للمستخدمين الجدد' على لوحة المستخدم بعد أنشاء الحساب"
+}

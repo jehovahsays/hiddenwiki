@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Borichèt",
+			"Dragonòt"
+		]
+	},
+	"automaticboardwelcome-desc": "A manda automaticament [[MediaWiki:User-board-welcome-message|un mëssagi ëd bin ëvnù]] a n'utent neuv apress la creassion d'un cont"
+}

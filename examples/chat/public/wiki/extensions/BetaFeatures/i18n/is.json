@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Maxí",
+			"Snævar",
+			"Sveinn í Felli"
+		]
+	},
+	"betafeatures-extension-type": "Prófunareiginleikar",
+	"betafeatures-toplink": "Prufuútgáfa",
+	"prefs-betafeatures": "Prófunareiginleikar",
+	"tooltip-pt-betafeatures": "Prófunareiginleikar"
+}

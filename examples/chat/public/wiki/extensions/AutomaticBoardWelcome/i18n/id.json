@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Farras"
+		]
+	},
+	"automaticboardwelcome-desc": "Secara otomatis mengirimkan [[MediaWiki:User-board-welcome-message|pesan selamat datang]] di papan pengguna milik pengguna baru setelah membuat akun"
+}

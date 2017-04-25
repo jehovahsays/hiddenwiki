@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"David1010"
+		]
+	},
+	"automaticboardwelcome-desc": "ავტომატურად ტოვებს [[MediaWiki:User-board-welcome-message|მისალმების შეტყობინებას]] ახალი მომხმარებლების დაფაზე ანგარიშის შექმნის შემდეგ"
+}

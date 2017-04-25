@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"VezonThunder"
+		]
+	},
+	"automaticboardwelcome-desc": "Lisää automaattisesti [[MediaWiki:User-board-welcome-message|tervetuloviestin]] uusien käyttäjien keskustelusivuille tunnuksen luomisen jälkeen"
+}

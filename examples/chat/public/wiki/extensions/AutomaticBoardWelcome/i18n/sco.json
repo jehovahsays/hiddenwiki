@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"John Reid"
+		]
+	},
+	"automaticboardwelcome-desc": "Autaematicly posts [[MediaWiki:User-board-welcome-message|ae weelcome message]] oan new uisers' uiser buirds efter accoont cræftin"
+}

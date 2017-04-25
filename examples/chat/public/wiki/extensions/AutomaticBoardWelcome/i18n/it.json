@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"automaticboardwelcome-desc": "Invia automaticamente un [[MediaWiki:User-board-welcome-message|messaggio di benvenuto]] ai nuovi utenti dopo la creazione dell'account"
+}

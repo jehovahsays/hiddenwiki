@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln"
+		]
+	},
+	"automaticboardwelcome-desc": "Ermöglicht, nach der Neuanlage eines Benutzerkontos, die Erstellung einer automatischen [[MediaWiki:User-board-welcome-message|Willkommensnachricht]] auf der entsprechenden Benutzerseite"
+}

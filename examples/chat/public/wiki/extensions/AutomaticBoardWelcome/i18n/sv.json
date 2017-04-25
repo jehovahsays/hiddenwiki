@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"automaticboardwelcome-desc": "Skickar automatiskt [[MediaWiki:User-board-welcome-message|ett välkomstmeddelande]] på nya användares användaranslagstavlor efter konto har skapats"
+}
