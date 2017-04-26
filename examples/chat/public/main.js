@@ -5,7 +5,7 @@ var log = function(msg)
 {
     console.log(msg);
 };
-log('The Developer console is temporarily disabled; see https://www.facebook.com/selfxss for more information');
+log('Protected -    - The Developer console is temporarily disabled; see https://www.facebook.com/selfxss for more information ');
 
 $('document').ready(function() {
   var FADE_TIME = 150; // ms

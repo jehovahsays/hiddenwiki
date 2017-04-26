@@ -28,46 +28,89 @@ var phpExpress = require('php-express')({
 app.set('views', './public');
 app.engine('php', phpExpress.engine);
 app.set('view engine', 'php');
-
-//app.engine( 'ejs', engine );
-app.set( 'view engine', 'ejs' );
-//app.engine('php', phpnode);
- 
- //routing all .php file to php-express
 app.all(/.+\.php$/, phpExpress.router); 
-
-//render = require('./index.js');
-
-//({bin:"C://Program Files//IIS Express//PHP//v5.5//php-cgi.exe"});
- 
-//render(__dirname+'/public/index.php', {}, function(e, r) {
-  //  console.log(r);
-//})
- 
-// use PHP as view engine in Express 
-
-    //phpnode = require('./index.js')({bin:"C://Program Files//IIS Express//PHP//v5.5//php-cgi.exe"});
- 
-//app.set('views', __dirname);
-//app.engine('php', phpnode);
-//app.set('view engine', 'php');
- 
-app.all('/index.php', function(req, res) {
-   res.render('index');
-})
 
 var csp = require('helmet-csp');
  
 app.use(csp({
    //Specify directives as normal. 
  directives: {
-    defaultSrc: ["'self'", 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
-    scriptSrc: ["'self'", "'unsafe-inline'","'unsafe-eval'",'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
-    styleSrc: ["'self'", "'unsafe-inline'",'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
-    fontSrc: ["'self'", 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
-    imgSrc: [ 'data:', 'https://www.gstatic.com','https://www.jehovahsays.net/','https://mobile.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
-	connectSrc: [ 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com', "blob:",'wss:'],
-    frameSrc: ["'self'", 'https://www.jehovahsays.net/','https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
+	     defaultSrc: ["'self'", 
+		     'https://mobile.jehovahsays.net',
+    'https://www.jehovahsays.net', 
+    'https://jehovahsays.net',
+    'https://www.youtube.com', 
+    'https://youtube.com',
+    'https://www.google.com',
+    'https://google.com',
+	,'https://www.google.com'],
+    scriptSrc: ["'self'",
+    "'unsafe-inline'",	
+	'https://mobile.jehovahsays.net',
+    'https://www.jehovahsays.net', 
+    'https://jehovahsays.net',
+    'https://www.youtube.com', 
+    'https://youtube.com',
+    'https://www.google.com',
+    'https://google.com',
+	,'https://www.google.com'],
+    styleSrc: ["'self'",
+    "'unsafe-inline'",	
+	'https://mobile.jehovahsays.net',
+    'https://www.jehovahsays.net', 
+    'https://jehovahsays.net',
+    'https://www.youtube.com', 
+    'https://youtube.com',
+    'https://www.google.com',
+    'https://google.com',
+	,'https://www.google.com'],
+    fontSrc: ["'self'", 
+	    'https://mobile.jehovahsays.net',
+    'https://www.jehovahsays.net', 
+    'https://jehovahsays.net',
+    'https://www.youtube.com', 
+    'https://youtube.com',
+    'https://www.google.com',
+    'https://google.com',
+	,'https://www.google.com'],
+    imgSrc: [ 'data:', 
+	    'https://mobile.jehovahsays.net',
+    'https://www.jehovahsays.net', 
+    'https://jehovahsays.net',
+    'https://www.youtube.com', 
+    'https://youtube.com',
+    'https://www.google.com',
+    'https://google.com',
+	,'https://www.google.com'],
+	connectSrc: ["'self'",
+	    'https://mobile.jehovahsays.net',
+    'https://www.jehovahsays.net', 
+    'https://jehovahsays.net',
+    'https://www.youtube.com', 
+    'https://youtube.com',
+    'https://www.google.com',
+    'https://google.com',
+	'https://www.google.com',
+	"blob:",
+	'wss:'],
+    frameSrc: ["'self'", 
+    'https://mobile.jehovahsays.net',
+    'https://www.jehovahsays.net', 
+    'https://jehovahsays.net',
+    'https://www.youtube.com', 
+    'https://youtube.com',
+    'https://www.google.com',
+    'https://google.com',
+	,'https://www.google.com'],
+	
+	 
+    //defaultSrc: ["'self'", 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
+    //scriptSrc: ["'self'", "'unsafe-inline'","'unsafe-eval'",'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
+    //styleSrc: ["'self'", "'unsafe-inline'",'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
+    //fontSrc: ["'self'", 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
+    //imgSrc: [ 'data:', 'https://www.gstatic.com','https://www.jehovahsays.net/','https://mobile.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
+	//connectSrc: [ 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com', "blob:",'wss:'],
+    //frameSrc: ["'self'", 'https://www.jehovahsays.net/','https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
 	//sandbox: ['allow-forms', 'allow-scripts'],
     //objectSrc: ["'none'"],
     upgradeInsecureRequests: true
