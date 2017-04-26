@@ -196,6 +196,7 @@ domaincert.pem
 domaincsr.pem
 domainkey.pem
 localsettings.php
+cache/
 
 
 #############
