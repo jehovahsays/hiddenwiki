@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Xuacu"
-		]
-	},
-	"automaticboardwelcome-desc": "Publica automaticamente [[MediaWiki:User-board-welcome-message|un mensaxe de bienvenida]] nos tableros de los nuevos usuarios dempués de crear la cuenta"
-}

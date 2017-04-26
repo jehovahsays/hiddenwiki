@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Armando-Martin",
-			"Macofe"
-		]
-	},
-	"automaticboardwelcome-desc": "Publica automáticamente [[MediaWiki:User-board-welcome-message|un mensaje de bienvenida]] en las páginas de usuario de los nuevos usuarios después de la creación de la cuenta"
-}

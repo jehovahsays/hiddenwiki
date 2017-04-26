@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Gomoko"
-		]
-	},
-	"automaticboardwelcome-desc": "Afficher automatiquement [[MediaWiki:User-board-welcome-message|un message d'accueil]] sur les pages utilisateur des nouveaux utilisateurs après leur création"
-}

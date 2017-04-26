@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Event"
-		]
-	},
-	"automaticboardwelcome-desc": "Sender automatisk [[MediaWiki:User-board-welcome-message|en velkomstmelding]] til nye brukeres brukertavler etter opprettelse av konto"
-}

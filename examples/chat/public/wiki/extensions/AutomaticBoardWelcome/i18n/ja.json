@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Schu",
-			"Shirayuki"
-		]
-	},
-	"automaticboardwelcome-desc": "利用者が新しいアカウントを作成した際に、その利用者のボードに[[MediaWiki:User-board-welcome-message|ウェルカムメッセージ]]を自動的に投稿する"
-}

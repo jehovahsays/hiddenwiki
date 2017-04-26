@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"McDutchie"
-		]
-	},
-	"automaticboardwelcome-desc": "Insere automaticamente un [[MediaWiki:User-board-welcome-message|message de benvenita]] in le tabuliero personal de nove usatores post le creation del conto"
-}

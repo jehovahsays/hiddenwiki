@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Vodnokon4e"
-		]
-	},
-	"automaticboardwelcome-desc": "Автоматично поставя [[MediaWiki:User-board-welcome-message|поздравително съобщение]] на таблото на нов потребител след създаването на акаунт."
-}

@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Alvaro Vidal-Abarca"
-		]
-	},
-	"automaticboardwelcome-desc": "Crea automàticament [[MediaWiki:User-board-welcome-message|un missatge de benvinguda]] en els panells d'usuaris nous, després que hagi creat un compte"
-}

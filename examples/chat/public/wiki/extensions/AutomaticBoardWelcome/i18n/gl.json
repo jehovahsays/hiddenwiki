@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Toliño"
-		]
-	},
-	"automaticboardwelcome-desc": "Publica automaticamente [[MediaWiki:User-board-welcome-message|unha mensaxe de benvida]] nos taboleiros dos usuarios despois da creación da conta"
-}

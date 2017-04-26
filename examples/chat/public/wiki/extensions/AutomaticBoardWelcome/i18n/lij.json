@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Giromin Cangiaxo"
-		]
-	},
-	"automaticboardwelcome-desc": "O manda aotomaticamente un [[MediaWiki:User-board-welcome-message|messaggio de benvegnuo]] a-i nœuvi utenti doppo a creaçion de l'account"
-}

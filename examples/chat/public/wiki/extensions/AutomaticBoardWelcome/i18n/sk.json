@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Helix84"
-		]
-	},
-	"automaticboardwelcome-desc": "Automaticky posiela [[MediaWiki:User-board-welcome-message|uvítaciu správu]] na diskusné stránky nových používateľov po vytvorení účtu"
-}

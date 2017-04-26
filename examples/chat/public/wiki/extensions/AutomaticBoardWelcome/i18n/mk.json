@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Bjankuloski06"
-		]
-	},
-	"automaticboardwelcome-desc": "Автоматски објевува [[MediaWiki:User-board-welcome-message|порака за добредојде]] на таблите на новите корисници откако ќе направат сметка"
-}

@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Sodmy"
-		]
-	},
-	"automaticboardwelcome-desc": "Автоматично посилає [[MediaWiki:User-board-welcome-message|привітальне повідомлення]] на дошках нових користувачів після створення облікових записів"
-}

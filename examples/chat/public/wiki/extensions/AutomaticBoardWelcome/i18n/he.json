@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Amire80"
-		]
-	},
-	"automaticboardwelcome-desc": "שליחה אוטומטית של [[MediaWiki:User-board-welcome-message|הודעת \"ברוך בואך\"]] לדפי משתמש אחרי יצירת החשבון"
-}

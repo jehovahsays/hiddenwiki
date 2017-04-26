@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Jack Phoenix <jack@countervandalism.net>"
-		]
-	},
-	"automaticboardwelcome-desc": "Automatically posts [[MediaWiki:User-board-welcome-message|a welcome message]] on new users' user boards after account creation"
-}

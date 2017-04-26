@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Dimension"
-		]
-	},
-	"automaticboardwelcome-desc": "在新用户账户创建后自动在其留言板上张贴[[MediaWiki:User-board-welcome-message|一条欢迎信息]]"
-}

@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Cainamarques"
-		]
-	},
-	"automaticboardwelcome-desc": "Insere automaticamente [[MediaWiki:User-board-welcome-message|uma mensagem de boas vindas]] à página de discussão dos usuários novos após a criação da conta"
-}

@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Minh Nguyen",
-			"Tuankiet65"
-		]
-	},
-	"automaticboardwelcome-desc": "Tự động thêm [[MediaWiki:User-board-welcome-message|một lời chào]] lên trang thảo luận của thành viên mới sau khi mở tài khoản."
-}
