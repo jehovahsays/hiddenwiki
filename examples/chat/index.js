@@ -43,7 +43,8 @@ app.use(csp({
     'https://youtube.com',
     'https://www.google.com',
     'https://google.com',
-	,'https://www.google.com'],
+	'https://www.google.com'	
+	],
     scriptSrc: ["'self'",
     "'unsafe-inline'",	
 	'https://mobile.jehovahsays.net',
@@ -81,7 +82,12 @@ app.use(csp({
     'https://youtube.com',
     'https://www.google.com',
     'https://google.com',
-	,'https://www.google.com'],
+	'https://www.google.com',
+	'https://t0.gstatic.com',
+	'https://t1.gstatic.com',
+	'https://t2.gstatic.com',
+	'https://t3.gstatic.com'
+	],
 	connectSrc: ["'self'",
 	    'https://mobile.jehovahsays.net',
     'https://www.jehovahsays.net', 
