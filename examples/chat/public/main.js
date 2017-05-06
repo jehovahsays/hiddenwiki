@@ -5,7 +5,7 @@ var log = function(msg)
 {
     console.log(msg);
 };
-log('Protected -    - The Developer console is temporarily disabled; see https://www.facebook.com/selfxss for more information ');
+log('Protected -    - The Developer console temporarily disabled; Google Search selfxss for more information ');
 
 $('document').ready(function() {
   var FADE_TIME = 150; // ms
@@ -245,7 +245,7 @@ $('document').ready(function() {
     connected = true;
     // Display the welcome message
 
-    var message = "Send a message to chat...";
+    var message = "";
     log(message, {
       prepend: true
     });
