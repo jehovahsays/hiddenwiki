@@ -30,6 +30,16 @@ app.engine('php', phpExpress.engine);
 app.set('view engine', 'php');
 app.all(/.+\.php$/, phpExpress.router); 
 
+//headers = require("express-headers"),
+ 
+//app.use(headers.rename("x-auth-token", "authorization")); //rename x-auth-token to authorization header
+//app.use(headers.validate("authorization")); //make sure there's an authorization header in the request
+//app.use(headers.validate("content-type", "text/html; charset=utf-8")); //make sure there's a content-type header matching application/json
+//app.use(headers.validate("Content-Type-Options", "nosniff"));
+
+//var php = require('php').registerExtension();
+
+
 var csp = require('helmet-csp');
  
 app.use(csp({
@@ -37,6 +47,7 @@ app.use(csp({
  directives: {
 	     defaultSrc: ["'self'", 
 		     'https://mobile.jehovahsays.net',
+			 'https://www.jehovahsays.net:8000',
     'https://www.jehovahsays.net', 
     'https://jehovahsays.net',
     'https://www.youtube.com', 
@@ -46,7 +57,8 @@ app.use(csp({
 	'https://www.google.com'	
 	],
     scriptSrc: ["'self'",
-    "'unsafe-inline'",	
+    "'unsafe-inline'",
+    'https://www.jehovahsays.net:8000',	
 	'https://mobile.jehovahsays.net',
     'https://www.jehovahsays.net', 
     'https://jehovahsays.net',
@@ -82,14 +94,15 @@ app.use(csp({
     'https://youtube.com',
     'https://www.google.com',
     'https://google.com',
-	'https://www.google.com',
-	'https://t0.gstatic.com',
-	'https://t1.gstatic.com',
-	'https://t2.gstatic.com',
-	'https://t3.gstatic.com'
+	'https://www.google.com'
+	//'https://t0.gstatic.com',
+	//'https://t1.gstatic.com',
+	//'https://t2.gstatic.com',
+	//'https://t3.gstatic.com'
 	],
 	connectSrc: ["'self'",
 	    'https://mobile.jehovahsays.net',
+		'https://www.jehovahsays.net:8000',
     'https://www.jehovahsays.net', 
     'https://jehovahsays.net',
     'https://www.youtube.com', 
@@ -101,6 +114,7 @@ app.use(csp({
 	'wss:'],
     frameSrc: ["'self'", 
     'https://mobile.jehovahsays.net',
+	'https://www.jehovahsays.net:8000',
     'https://www.jehovahsays.net', 
     'https://jehovahsays.net',
     'https://www.youtube.com', 
@@ -173,8 +187,8 @@ app.use(hpkp({
 }))
 
 app.use(helmet.frameguard({
-  action: 'SAMEORIGIN',
-  //domain: 'https://www.jehovahsays.net'
+  action: 'DENY',
+  //domain: 'https://mobile.jehovahsays.net'
 }))
 
 app.use(helmet.noCache())

@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name ="theme-color" content="white">
 <meta http-equiv="Content-Security-Policy" content="
-default-src 'self' https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com https://translate.googleapis.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; 
-script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com https://translate.googleapis.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; 
+default-src 'self' https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.jehovahsays.net:8000/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com https://translate.googleapis.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; 
+script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.jehovahsays.net:8000 https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com https://translate.googleapis.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; 
 style-src 'self' 'unsafe-inline' https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com https://translate.googleapis.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; 
 img-src data: https://t0.gstatic.com https://t1.gstatic.com https://t2.gstatic.com https://t3.gstatic.com https://www.gstatic.com https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com; 
 font-src 'self' https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net; 
-connect-src https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com blob: wss:; 
-frame-src 'self' https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com; upgrade-insecure-requests;" />
+connect-src https://jehovahsays.net/ https://www.jehovahsays.net/ https://www.jehovahsays.net:8000/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com blob: wss:; 
+frame-src 'self' https://jehovahsays.net/ https://www.jehovahsays.net/ https://www.jehovahsays.net:8000/ https://mobile.jehovahsays.net/ https://www.youtube.com/ https://pagead2.googlesyndication.com/ https://googleads.g.doubleclick.net https://translate.google.com https://www.google.com; upgrade-insecure-requests;" />
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -35,7 +35,7 @@ frame-src 'self' https://www.jehovahsays.net/ https://mobile.jehovahsays.net/ ht
 <meta name="twitter:image" content="https://www.jehovahsays.net/morgansbyers.jpg"/>
 <meta name="twitter:url" content="https://www.jehovahsays.net"/>
   
-  <style>  
+<style type="text/css">  
 	/* Fix user-agent */
 * {
   box-sizing: border-box;
@@ -62,9 +62,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
-iframe {
-  width: 100%;
-}
+
 button {
     width: 100%;
   height: 150%;
@@ -133,11 +131,11 @@ ul {
 /* Font */
 .messages {
   font-size: 150%;
-  height: 90%;
+  height: 100%;
   width: 100%;
 }
 .inputMessage {
-  font-size: 70%;
+  font-size: 50%;
 }
 .log {
   color: gray;
@@ -147,11 +145,12 @@ ul {
 }
 /* Messages */
 .chatArea {
-  height: 100%;
+  height: 110%;
+    width: 100%;
   padding-bottom: 60px;
 }
 .messages {
-  height: 90%;
+  height: 110%;
   width: 100%;
   margin: 0;
   overflow-y: scroll;
@@ -168,7 +167,7 @@ ul {
 }
 /* Input */
 .inputMessage {
-  border: 10px solid #000;
+  border: 5px solid #000;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -187,7 +186,7 @@ input::-webkit-input-placeholder {
 	
 </style>
 
-<script src="rssticker.js" type="text/javascript">
+<script src="rssticker.js" type="application/javascript">
 /***********************************************
 * Advanced RSS Ticker (Ajax invocation)- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
 * Please keep this notice intact
@@ -199,7 +198,7 @@ input::-webkit-input-placeholder {
 /*Sample CSS to style the two tickers in the demo*/
 .cnnclass{
 width: 100%;
-padding: 3px;
+padding: 1px;
 margin-bottom: 1em;
 filter:progid:DXImageTransform.Microsoft.alpha(opacity=80); /*Specify fade effect in IE. Remove if desired.*/
 -moz-opacity: 0.8; /*Specify fade effect in Firefox. Remove if desired.*/
@@ -230,16 +229,17 @@ font-size: 45%;
 
 	</head>
 	<body>
-	<br><br><br>
+
 	<center>
   <ul class="pages">
     <li class="chat page">
       <div class="chatArea">  
-        <ul class="messages"><br><br>
+        <ul class="messages">
 		<li>
-		<div style="height: 225px">
-		<a href="http://radio.garden/"><font size="1"><p align="left">Listen to your radio!</p></font></a>
-		<a href="https://weather.com/maps/usdopplerradar"><font size="1"><p align="right">Check your weather alerts!</p></font></a>
+      <input class="inputMessage" autocomplete="false" placeholder="send chatroom a message"/>
+    </li>	<br>
+		<li>
+		<div style="height: 55px">
 <script type="text/javascript">
 //rssticker_ajax(RSS_id, cachetime, divId, divClass, delay, optionalswitch)
 //1) RSS_id: "Array key of RSS feed in PHP script"
@@ -252,23 +252,18 @@ document.write("")
 new rssticker_ajax("Google", 60, "cnnbox", "cnnclass", 3000, "date")
 //document.write("<br />BBC News: (Title+date+description shown)")
 //new rssticker_ajax("BBC", 1200, "ddbox", "bbcclass", 3500, "date+description")
-</script>
-
+</script></div>
 <iframe 
-width="100%" 
-height="165" 
-src="https://www.jehovahsays.net/$1.php" 
+width="100%"
+height="220" 
+src="https://www.jehovahsays.net:8000/$1.php" 
 frameborder="0" 
 allowfullscreen>
 </iframe>
-
 			
 </li>		
 		</ul>	
-	</div>
-<li>
-      <input class="inputMessage" autocomplete="false" placeholder="send chatroom a message"/>
-    </li>	
+	
     <li class="login page">
       <div class="form">
  
@@ -289,128 +284,11 @@ allowfullscreen>
  </li>
 
   </ul>
-  <script src="/jquery-1.10.2.min.js"></script>
+<script type="application/javascript"  src="https://mobile.jehovahsays.net/jquery-1.10.2.min.js"></script>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/main.js"></script>	
-  
-      <script>
-      var URL_SERVER = 'https://www.jehovahsays.net';
-      var socket = io.connect(URL_SERVER);
-      socket.on('message', function(data) {
-        alert(data);
-      });
-    </script>
-	
- </center>
+<script type="application/javascript" src="/socket.io/socket.io.js"></script>
+<script type="application/javascript"  src="/main.js"></script>
 
- 		
-		<script type="text/javascript">
-    var annyangScript = document.createElement('script');
-    if (/www.jehovahsays.net/.exec(window.location)) {
-      annyangScript.src = "https://www.jehovahsays.net/dist/annyang.js"
-    } else {
-      annyangScript.src = "https://www.jehovahsays.net/dist/annyang.min.js"
-    }
-    document.write(annyangScript.outerHTML)
-  </script>
-  <script src="https://www.jehovahsays.net/dist/jquery.min.js"></script>
-<script type="text/javascript">
-  "use strict";
-  if (annyang) {
-        var youtube = function() {
-      window.location.href = 'https://www.youtube.com';
-    }  
-  
-        var twitter = function() {
-      window.location.href = 'https://www.twitter.com';
-    }
-	
-	    var weather = function() {
-      window.location.href = 'https://www.weather.com';
-    }
-	
-	    var facebook = function() {
-      window.location.href = 'https://www.facebook.com';
-    }
-	
-	    var instagram = function() {
-      window.location.href = 'https://www.instagram.com';
-    }
-	
-	    var xbox = function() {
-      window.location.href = 'https://www.xbox.com';
-	}
-	    var google = function() {
-      window.location.href = 'https://www.google.com';
-	}
-	
-	    var bing = function() {
-      window.location.href = 'https://www.bing.com';
-	}
-	    var yahoo = function() {
-      window.location.href = 'https://www.yahoo.com';
-	}
-	    var microsoft = function() {
-      window.location.href = 'https://www.microsoft.com';
-	}
-	    var apple = function() {
-      window.location.href = 'https://www.apple.com';
-	}
-	    var msn = function() {
-      window.location.href = 'https://www.msn.com';
-	}	
-	
-	    var amazon = function() {
-      window.location.href = 'https://www.amazon.com';
-	}
-	    var aol = function() {
-      window.location.href = 'https://www.aol.com';
-	}	
-	    var paypal = function() {
-      window.location.href = 'https://www.paypal.com';
-	}
-	    var walmart = function() {
-      window.location.href = 'https://www.walmart.com';
-	}
-	
-    var commands = {
-	  'youtube':               youtube,			
-	  'twitter':               twitter,
-      'weather':               weather,
-      'facebook':              facebook,	  
-      'instagram':             instagram,
-	  'xbox':                  xbox,
-	  'google':                google,	  
-	  'bing':                  bing,
-	  'yahoo':                 yahoo, 
-	  'microsoft':             microsoft,
-	  'apple':                 apple, 
-	  'msn':                   msn,
-      'amazon':                amazon, 
-      'aol':                   aol,
-      'paypal':                paypal,
-      'walmart':               walmart,	  
-    };
-    annyang.debug();
-    annyang.addCommands(commands);
-    annyang.setLanguage('en');
-	
-    annyang.start();
-	
-  } else {
-    $(document).ready(function() {
-      $('#unsupported').fadeIn('fast');
-    });
-  }
-  
-  
-  </script>	
 
-  <script src="https://www.jehovahsays.net/vendor/js/highlight.pack.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad();
-  </script>	
- 
 </body>	
 </html>
