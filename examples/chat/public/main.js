@@ -42,9 +42,9 @@ $('document').ready(function() {
 	  
     var message = '';
     if (data.numUsers === 1) {
-      message += "there is 1 visitor in chat";
+      message += "";
     } else {
-      message += "there are " + data.numUsers + " visitors in chat";
+      message += "";
     }
     log(message);
   }

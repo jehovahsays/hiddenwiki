@@ -1,224 +1,32 @@
-"use strict";
-
-var express = require('express'),
-    https = require('https'),
+// Setup basic express server
+var	io = require('socket.io-client'),
 	connect = require('connect'),
-    async = require('async'),	
-    helmet = require('helmet'),
+    async = require('async'),
+	ServiceRunner = require('service-runner'),
 	morgan = require('morgan'),
     path = require('path'),
 	compression = require('compression'),
 	url = require('url'),
-	frameguard = require('frameguard'),
-	tls = require('tls'),
-	ServiceRunner = require('service-runner'),
-	io = require('socket.io-client'),
-    fs = require('fs');
-	
+	fs = require('fs');
+    express = require('express');
 var app = express();
+var server = require('http').createServer(app);
+var port = process.env.PORT || 80;
 
-// must specify options hash even if no options provided!
-var phpExpress = require('php-express')({
- 
-  // assumes php is in your PATH
-  binPath: 'php'
-});
-
-// set view engine to php-express
-app.set('views', './public');
-app.engine('php', phpExpress.engine);
-app.set('view engine', 'php');
-app.all(/.+\.php$/, phpExpress.router); 
-
-//headers = require("express-headers"),
- 
-//app.use(headers.rename("x-auth-token", "authorization")); //rename x-auth-token to authorization header
-//app.use(headers.validate("authorization")); //make sure there's an authorization header in the request
-//app.use(headers.validate("content-type", "text/html; charset=utf-8")); //make sure there's a content-type header matching application/json
-//app.use(headers.validate("Content-Type-Options", "nosniff"));
-
-//var php = require('php').registerExtension();
-
-
-var csp = require('helmet-csp');
- 
-app.use(csp({
-   //Specify directives as normal. 
- directives: {
-	     defaultSrc: ["'self'", 
-		     'https://mobile.jehovahsays.net',
-			 'https://www.jehovahsays.net:8000',
-    'https://www.jehovahsays.net', 
-    'https://jehovahsays.net',
-    'https://www.youtube.com', 
-    'https://youtube.com',
-    'https://www.google.com',
-    'https://google.com',
-	'https://www.google.com'	
-	],
-    scriptSrc: ["'self'",
-    "'unsafe-inline'",
-    'https://www.jehovahsays.net:8000',	
-	'https://mobile.jehovahsays.net',
-    'https://www.jehovahsays.net', 
-    'https://jehovahsays.net',
-    'https://www.youtube.com', 
-    'https://youtube.com',
-    'https://www.google.com',
-    'https://google.com',
-	,'https://www.google.com'],
-    styleSrc: ["'self'",
-    "'unsafe-inline'",	
-	'https://mobile.jehovahsays.net',
-    'https://www.jehovahsays.net', 
-    'https://jehovahsays.net',
-    'https://www.youtube.com', 
-    'https://youtube.com',
-    'https://www.google.com',
-    'https://google.com',
-	,'https://www.google.com'],
-    fontSrc: ["'self'", 
-	    'https://mobile.jehovahsays.net',
-    'https://www.jehovahsays.net', 
-    'https://jehovahsays.net',
-    'https://www.youtube.com', 
-    'https://youtube.com',
-    'https://www.google.com',
-    'https://google.com',
-	,'https://www.google.com'],
-    imgSrc: [ 'data:', 
-	    'https://mobile.jehovahsays.net',
-    'https://www.jehovahsays.net', 
-    'https://jehovahsays.net',
-    'https://www.youtube.com', 
-    'https://youtube.com',
-    'https://www.google.com',
-    'https://google.com',
-	'https://www.google.com'
-	//'https://t0.gstatic.com',
-	//'https://t1.gstatic.com',
-	//'https://t2.gstatic.com',
-	//'https://t3.gstatic.com'
-	],
-	connectSrc: ["'self'",
-	    'https://mobile.jehovahsays.net',
-		'https://www.jehovahsays.net:8000',
-    'https://www.jehovahsays.net', 
-    'https://jehovahsays.net',
-    'https://www.youtube.com', 
-    'https://youtube.com',
-    'https://www.google.com',
-    'https://google.com',
-	'https://www.google.com',
-	"blob:",
-	'wss:'],
-    frameSrc: ["'self'", 
-    'https://mobile.jehovahsays.net',
-	'https://www.jehovahsays.net:8000',
-    'https://www.jehovahsays.net', 
-    'https://jehovahsays.net',
-    'https://www.youtube.com', 
-    'https://youtube.com',
-    'https://www.google.com',
-    'https://google.com',
-	,'https://www.google.com'],
-	
-	 
-    //defaultSrc: ["'self'", 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
-    //scriptSrc: ["'self'", "'unsafe-inline'","'unsafe-eval'",'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
-    //styleSrc: ["'self'", "'unsafe-inline'",'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com','https://translate.googleapis.com','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net'],
-    //fontSrc: ["'self'", 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
-    //imgSrc: [ 'data:', 'https://www.gstatic.com','https://www.jehovahsays.net/','https://mobile.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
-	//connectSrc: [ 'https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com', "blob:",'wss:'],
-    //frameSrc: ["'self'", 'https://www.jehovahsays.net/','https://mobile.jehovahsays.net/','https://www.jehovahsays.net/','https://www.youtube.com/','https://pagead2.googlesyndication.com/','https://googleads.g.doubleclick.net','https://translate.google.com','https://www.google.com'],
-	//sandbox: ['allow-forms', 'allow-scripts'],
-    //objectSrc: ["'none'"],
-    upgradeInsecureRequests: true
-  },
-  
-  // This module will detect common mistakes in your directives and throw errors 
-  // if it finds any. To disable this, enable "loose mode". 
-  loose: false,
- 
-  // Set to true if you only want browsers to report errors, not block them. 
-  // You may also set this to a function(req, res) in order to decide dynamically 
-  // whether to use reportOnly mode, e.g., to allow for a dynamic kill switch. 
-  reportOnly: false,
- 
-  // Set to true if you want to blindly set all headers: Content-Security-Policy, 
-  // X-WebKit-CSP, and X-Content-Security-Policy. 
-  setAllHeaders: true,
- 
-  // Set to true if you want to disable CSP on Android where it can be buggy. 
-  disableAndroid: false,
- 
-  // Set to false if you want to completely disable any user-agent sniffing. 
-  // This may make the headers less compatible but it will be much faster. 
-  // This defaults to `true`. 
-  browserSniff: true
-}));
-	
 app.use(compression());
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 
 app.use(morgan('combined', {stream: accessLogStream}));
 
-app.use(helmet());
-
-var referrerPolicy = require('referrer-policy')
-
-app.use(referrerPolicy({ policy: 'no-referrer' }))
-
-app.use(helmet.hidePoweredBy())
-
-var hpkp = require('hpkp')
-
-var ninetyDaysInSeconds = 7776000
-app.use(hpkp({
-  maxAge: ninetyDaysInSeconds,
-  sha256s: ['QfhFmBHD75cJ60nUGZSgme0WnEzldcEyvBkONArxeUI=', 'lCppFqbkrlJ3EcVFAkeip0+44VaoJUymbnOaEUk7tEU=',
-  'grX4Ta9HpZx6tSHkmCrvpApTQGo67CYDnvprLg5yRME=', 'klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=', 
-  'Slt48iBVTjuRQJTjbzopminRrHSGtndY0/sj0lFf9Qk=', '"h6801m+z8v3zbgkRHpq6L29Esgfzhj89C1SyUCOQmqU=', 
-  'EDag/9Ub9j75I8wEW6LIcdUBcZyXeI8XVbzBlm0uBQU=', 'AYyIEVI7Cz5FAWKATkzY51TwbGqzvDQyUZWpzt8lHjw=',
-  'NTP1sOnRt6yYs00V7BVgxjmhwc289k7i+K/97AZUd4w=', 'Am8CJiGfnbik0PODFPRL8pJtN7fjph9bigC+ulkoWrY=',
-  'x9SZw6TwIqfmvrLZ/kz1o0Ossjmn728BnBKpUFqGNVM=', '58qRu/uxh4gFezqAcERupSkRYBlBAvfcw7mEjGPLnNU=',
-  '"lCppFqbkrlJ3EcVFAkeip0+44VaoJUymbnOaEUk7tEU=']
-}))
-
-app.use(helmet.frameguard({
-  action: 'DENY',
-  //domain: 'https://mobile.jehovahsays.net'
-}))
-
-app.use(helmet.noCache())
-
-var options = {
-    //key  : fs.readFileSync('ssl/key.pem'),
-    //ca   : fs.readFileSync('ssl/csr.pem'),
-    //cert : fs.readFileSync('ssl/cert.pem'),
-	//cert : fs.readFileSync('ssl/signed.pem'),
-	key  : fs.readFileSync('ssl/domainkey.pem'),
-	ca   : fs.readFileSync('ssl/domaincsr.pem'),	
-	cert : fs.readFileSync('ssl/domaincert.pem')	
-}
-var serverPort = 443;
-
-var server = https.createServer(options, app);
 var io = require('socket.io')(server);
 
-// Redirect from http port 80 to https
-var http = require('http');
-http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-    res.end();
-}).listen(80);
-
-app.use(express.static(__dirname + '/public'));
-
-server.listen(serverPort, function() {
-  console.log('HTTPS Server Actived');
+server.listen(port, function () {
+  console.log('Server listening at port %d', port);
 });
+
+// Routing
+app.use(express.static(__dirname + '/BrowserQuest'));
 
 // Chatroom
 
@@ -226,7 +34,6 @@ var numUsers = 0;
 
 io.on('connection', function (socket) {
   var addedUser = false;
-
 
   // when the client emits 'new message', this listens and executes
   socket.on('new message', function (data) {
@@ -249,7 +56,7 @@ io.on('connection', function (socket) {
       numUsers: numUsers
     });
     // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined chat', {
+    socket.broadcast.emit('user joined', {
       username: socket.username,
       numUsers: numUsers
     });
@@ -257,14 +64,14 @@ io.on('connection', function (socket) {
 
   // when the client emits 'typing', we broadcast it to others
   socket.on('typing', function () {
-    socket.broadcast.emit('user typing reply', {
+    socket.broadcast.emit('typing', {
       username: socket.username
     });
   });
 
   // when the client emits 'stop typing', we broadcast it to others
   socket.on('stop typing', function () {
-    socket.broadcast.emit('user stop typing reply', {
+    socket.broadcast.emit('stop typing', {
       username: socket.username
     });
   });
@@ -275,11 +82,10 @@ io.on('connection', function (socket) {
       --numUsers;
 
       // echo globally that this client has left
-      socket.broadcast.emit('user disconnected', {
+      socket.broadcast.emit('user left', {
         username: socket.username,
         numUsers: numUsers
       });
     }
   });
 });
-
